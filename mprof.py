@@ -226,14 +226,14 @@ This file contains the process memory consumption, in Mb (one value per line).""
         print("A program to run must be provided. Use -h for help")
         sys.exit(1)
 
-    print("{1}: Sampling memory every {0}s".format(
+    logger.info("{1}: Sampling memory every {0}s".format(
         args.interval, osp.basename(sys.argv[0])))
 
     mprofile_output = args.filename
 
     program = args.program
     if args.attach_existing:
-        print('attaching to existing process, using hint: {}'.format(program[0]))
+        logger.info('attaching to existing process, using hint: {}'.format(program[0]))
         if program[0].isdigit():
             p = literal_eval(program[0])
             cmd_line = get_cmd_line(program)
@@ -250,7 +250,7 @@ This file contains the process memory consumption, in Mb (one value per line).""
         if args.timeout is None:
             args.timeout = 3600
     else:
-        print('running new process')
+        logger.info('running new process')
         # .. TODO: more than one script as argument ? ..
         if program[0].endswith('.py') and not args.nopython:
             if args.multiprocess:
