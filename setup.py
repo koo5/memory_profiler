@@ -4,7 +4,7 @@ from setuptools import setup
 
 # https://packaging.python.org/guides/single-sourcing-package-version/
 def find_version(file_paths):
-    with open(file_paths) as f:
+    with open(file_paths, encoding="utf-8") as f:
         version_file = f.read()
     version_match = re.search(
         r"^__version__ = ['\"]([^'\"]*)['\"]", version_file, re.M
@@ -30,7 +30,7 @@ Operating System :: Unix
 setup(
     name='memory_profiler',
     description='A module for monitoring memory usage of a python program',
-    long_description=open('README.rst').read(),
+    long_description=open('README.rst', encoding="utf-8").read(),
     version=find_version("memory_profiler.py"),
     author='Fabian Pedregosa',
     author_email='f@bianp.net',
